@@ -1,16 +1,15 @@
 import axios from 'axios';
 
-const userRegister = () => {
-  axios.post('http://localhost:4000', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
+const userRegister = (userDetails) => {
+  return new Promise((resolve) => {
+    axios.post('http://localhost:8080/signup', userDetails)
     .then(function (response) {
-      console.log(response);
+      resolve({message: 'Success', response});
     })
     .catch(function (error) {
-      console.log(error);
+      resolve({ message: 'Fail', error })
     });
+  })
 }
 
 export { userRegister };
