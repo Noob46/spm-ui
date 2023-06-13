@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import App from './App';
 import Signup from './Components/Signup.js';
 import Dashboard from './Components/Dashboard.js';
+import ForgotPassword from './Components/ForgotPassword';
 const NotFound = () => <h1>Page Not Found</h1>;
 
 const AppRoutes = () => {
@@ -11,6 +12,7 @@ const AppRoutes = () => {
       <Route exact path='/' element={<App />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/forgotpassword' element={<ForgotPassword />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
