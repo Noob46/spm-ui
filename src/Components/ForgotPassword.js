@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import '../CSS/Signup.css';
 import Button from '../Reusables/Button';
 import Form from 'react-bootstrap/Form';
-import Link from '@mui/material/Link'
 import { userLogin } from '../Actions/LoginActions';
 import { SnackBar } from '../Reusables/Snackbar';
 
-const Login = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -17,12 +16,8 @@ const Login = () => {
 
   const handleChange = async () => {
     const loginStatus = await userLogin({ email, password });
-    console.log(loginStatus, 'loginStatus')
-    if (loginStatus.message.data.message === 'User not found') {
+    if(loginStatus.message === 'User not found'){
       setErrorMessage('User not found');
-      setSnackBarOpen(true);
-    } else if (loginStatus.message.data.message === 'Incorrect Password') {
-      setErrorMessage('Incorrect Password');
       setSnackBarOpen(true);
     } else {
       navigate("/dashboard");
@@ -36,7 +31,7 @@ const Login = () => {
   return (
     <div className="signup-page">
       <header className="Header">
-        <h1>Login Page</h1>
+        <h1>Forgot Password Page</h1>
       </header>
 
       <main className="Content">
@@ -47,28 +42,14 @@ const Login = () => {
             </div>
           </div>
           <div className='formFields'>
-            <h2>Login</h2>
+            <h2>Forgot Password</h2>
             <Form className='formElement'>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Text className="newUser" muted>
-                  Forgot Password ? <Link href="/#/forgotpassword">Click Here</Link>.
-                </Form.Text>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Text className="newUser" muted>
-                  New User? <Link href="/#/signup">Signup</Link>.
-                </Form.Text>
-              </Form.Group>
             </Form>
-            <Button handleChange={() => handleChange()} buttonName={'Login'} />
+            <Button handleChange={() => handleChange()} buttonName={'Send Link'} />
             {snackBarOpen ? <SnackBar open={snackBarOpen} handleSnackBarClose={handleSnackBarClose} errorMessage={errorMessage} /> : null}
           </div>
         </div>
@@ -80,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
