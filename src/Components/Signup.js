@@ -64,7 +64,7 @@ const Signup = () => {
                 <Form.Control type="password" placeholder="Repeat Password" onChange={(e) => setRepeatPasswod(e.target.value)} />
               </Form.Group>
               <Form.Text className="alreadyUser" muted>
-                Already a Member? <Link href="/#/">Login</Link>.
+                Already a Member? <Link href="/">Login</Link>.
               </Form.Text>
             </Form>
             <Button handleChange={() => handleChange()} buttonName={'SignUp'} />

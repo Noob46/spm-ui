@@ -59,12 +59,12 @@ const Login = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Text className="newUser" muted>
-                  Forgot Password ? <Link href="/#/forgotpassword">Click Here</Link>.
+                  Forgot Password ? <Link href="/forgotpassword">Click Here</Link>.
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Text className="newUser" muted>
-                  New User? <Link href="/#/signup">Signup</Link>.
+                  New User? <Link href="/signup">Signup</Link>.
                 </Form.Text>
               </Form.Group>
             </Form>

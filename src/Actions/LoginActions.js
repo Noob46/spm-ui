@@ -14,4 +14,16 @@ const userLogin = (userData) => {
   })
 }
 
-export { userLogin };
+const resetPassword = (userData) => {
+  return new Promise((resolve) => {
+    axios.post('http://localhost:8080/resetPassword', userData)
+    .then(response => {
+      resolve({ message: response })
+    })
+    .catch(function (error) {
+      resolve({ message: error })
+    });
+  })
+}
+
+export { userLogin, resetPassword };

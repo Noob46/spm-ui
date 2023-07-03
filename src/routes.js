@@ -4,6 +4,7 @@ import App from './App';
 import Signup from './Components/Signup.js';
 import Dashboard from './Components/Dashboard.js';
 import ForgotPassword from './Components/ForgotPassword';
+import { CompanyProjects } from './Components/CompanyProjects';
 const NotFound = () => <h1>Page Not Found</h1>;
 
 const AppRoutes = () => {
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Route path='/signup' element={<Signup />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/forgotpassword' element={<ForgotPassword />} />
+      <Route path='/CompanyProjects' element={<CompanyProjects />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )

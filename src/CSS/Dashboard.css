@@ -1,3 +1,7 @@
 .material-icons, .logoutButton {
   cursor: pointer;
 }
+
+.bg-gradient-primary {
+  background-image: linear-gradient(195deg,#bad8b6 0%, #61b390 100%);
+}
