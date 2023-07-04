@@ -22,7 +22,8 @@ const Signup = () => {
       setErrorMessage('Email format is not valid');
       setSnackBarOpen(true);
     } else if (password === repeatPassword) {
-      const registerUser = await userRegister({ email, password, company_id });
+      const refreshToken = '';
+      const registerUser = await userRegister({ email, password, company_id, refreshToken });
       if (registerUser.message === 'Success') {
         navigate('/')
       }

@@ -26,4 +26,17 @@ const resetPassword = (userData) => {
   })
 }
 
-export { userLogin, resetPassword };
+const activate = (userData) => {
+  return new Promise((resolve) => {
+    console.log(userData, 'userData')
+    axios.post('http://localhost:8080/activate', userData)
+    .then(response => {
+      resolve({ message: response })
+    })
+    .catch(function (error) {
+      resolve({ message: error })
+    });
+  })
+}
+
+export { userLogin, resetPassword, activate };
