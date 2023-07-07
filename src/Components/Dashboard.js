@@ -5,6 +5,7 @@ import Button from '../Reusables/Button';
 import { Authentiacation } from '../auth';
 import { SideNavBar } from '../Reusables/SideNavBar';
 import '../CSS/Dashboard.css';
+import axios from 'axios';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);

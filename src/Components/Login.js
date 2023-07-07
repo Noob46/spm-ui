@@ -29,7 +29,7 @@ const Login = () => {
       setSnackBarOpen(true);
     } else {
       navigate("/dashboard");
-      window.location.reload();
+      // window.location.reload();
     }
   }
 

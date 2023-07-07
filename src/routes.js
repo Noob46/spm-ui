@@ -8,6 +8,7 @@ import { CompanyProjects } from './Components/CompanyProjects';
 import Activate from './Components/Activate';
 import ContactUs from './Components/ContactUs';
 import AboutUs from './Components/AboutUs';
+import KanbanView from './Components/KanbanView';
 const NotFound = () => <h1>Page Not Found</h1>;
 
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path='/activate/:userToken' element={<Activate />} />
       <Route path='/ContactUs' element={<ContactUs />} />
       <Route path='/AboutUs' element={<AboutUs />} />
+      <Route path='/KanbanView' element={<KanbanView />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )

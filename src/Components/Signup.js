@@ -24,8 +24,10 @@ const Signup = () => {
     } else if (password === repeatPassword) {
       const refreshToken = '';
       const registerUser = await userRegister({ email, password, company_id, refreshToken });
-      if (registerUser.message === 'Success') {
-        navigate('/')
+      console.log(registerUser, 'registerUser')
+      if (registerUser.response.data.message === 'Email Sent Successfully!') {
+        setErrorMessage('Email Sent Successfully. Please Verify your Email ID');
+        setSnackBarOpen(true);
       }
     } else {
       setErrorMessage('Passwords does not match');
