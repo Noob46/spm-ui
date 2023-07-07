@@ -22,9 +22,12 @@ const Signup = () => {
       setErrorMessage('Email format is not valid');
       setSnackBarOpen(true);
     } else if (password === repeatPassword) {
-      const registerUser = await userRegister({ email, password, company_id });
-      if (registerUser.message === 'Success') {
-        navigate('/')
+      const refreshToken = '';
+      const registerUser = await userRegister({ email, password, company_id, refreshToken });
+      console.log(registerUser, 'registerUser')
+      if (registerUser.response.data.message === 'Email Sent Successfully!') {
+        setErrorMessage('Email Sent Successfully. Please Verify your Email ID');
+        setSnackBarOpen(true);
       }
     } else {
       setErrorMessage('Passwords does not match');
@@ -64,7 +67,7 @@ const Signup = () => {
                 <Form.Control type="password" placeholder="Repeat Password" onChange={(e) => setRepeatPasswod(e.target.value)} />
               </Form.Group>
               <Form.Text className="alreadyUser" muted>
-                Already a Member? <Link href="/#/">Login</Link>.
+                Already a Member? <Link href="/">Login</Link>.
               </Form.Text>
             </Form>
             <Button handleChange={() => handleChange()} buttonName={'SignUp'} />

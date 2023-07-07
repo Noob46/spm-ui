@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Signup.css';
 import Button from '../Reusables/Button';
@@ -24,8 +24,12 @@ const Login = () => {
     } else if (loginStatus.message.data.message === 'Incorrect Password') {
       setErrorMessage('Incorrect Password');
       setSnackBarOpen(true);
+    } else if (loginStatus.message.data.message === 'Email not verified') {
+      setErrorMessage('Email not verified');
+      setSnackBarOpen(true);
     } else {
       navigate("/dashboard");
+      // window.location.reload();
     }
   }
 
@@ -51,7 +55,7 @@ const Login = () => {
             <Form className='formElement'>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <Form.Control type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value) }} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Password</Form.Label>
@@ -59,12 +63,12 @@ const Login = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Text className="newUser" muted>
-                  Forgot Password ? <Link href="/#/forgotpassword">Click Here</Link>.
+                  Forgot Password ? <Link href="/forgotpassword">Click Here</Link>.
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Text className="newUser" muted>
-                  New User? <Link href="/#/signup">Signup</Link>.
+                  New User? <Link href="/signup">Signup</Link>.
                 </Form.Text>
               </Form.Group>
             </Form>

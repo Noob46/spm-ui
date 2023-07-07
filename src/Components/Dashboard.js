@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Form } from "react-bootstrap";
-import LogoutIcon from '@mui/icons-material/Logout';
 import Button from '../Reusables/Button';
 import { Authentiacation } from '../auth';
 import { SideNavBar } from '../Reusables/SideNavBar';
-import '../CSS/Dashboard.css'
+import '../CSS/Dashboard.css';
+import axios from 'axios';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -295,18 +294,20 @@ const Dashboard = () => {
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
+                          {/* <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th> */}
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Material XD Version</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'MATERIAL XD VERSION'} >
+                                  <h6 class="mb-0 text-sm">Material XD Version</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -329,7 +330,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> $14,000 </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -340,16 +341,18 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-3" alt="atlassian" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Add Progress Track</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'ADD PROGRESS TRACK'}>
+                                  <h6 class="mb-0 text-sm">Add Progress Track</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -366,7 +369,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> $3,000 </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -377,16 +380,18 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-info w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-3" alt="team7" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'FIX PLATFORM ERRORS'}>
+                                  <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -403,7 +408,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> Not set </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -414,16 +419,18 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-3" alt="spotify" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'LAUNCH OUR MOBILE APP'}>
+                                  <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -446,7 +453,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> $20,500 </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -457,16 +464,18 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-3" alt="jira" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Add the New Pricing Page</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'ADD THE NEW PRICING PAGE'}>
+                                  <h6 class="mb-0 text-sm">ADD THE NEW PRICING PAGE</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -480,7 +489,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> $500 </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -491,16 +500,18 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25"></div>
                               </div>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
-                              <div>
+                              {/* <div>
                                 <img src="./assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm me-3" alt="invision" />
-                              </div>
+                              </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
+                                <Button type="button" class="btn btn-primary" buttonName={'REDESIGN NEW ONLINE SHOP'}>
+                                  <h6 class="mb-0 text-sm">REDESIGN NEW ONLINE SHOP</h6>
+                                </Button>
                               </div>
                             </div>
                           </td>
@@ -517,7 +528,7 @@ const Dashboard = () => {
                           <td class="align-middle text-center text-sm">
                             <span class="text-xs font-weight-bold"> $2,000 </span>
                           </td>
-                          <td class="align-middle">
+                          {/* <td class="align-middle">
                             <div class="progress-wrapper w-75 mx-auto">
                               <div class="progress-info">
                                 <div class="progress-percentage">
@@ -528,6 +539,11 @@ const Dashboard = () => {
                                 <div class="progress-bar bg-gradient-info w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
                               </div>
                             </div>
+                          </td> */}
+                        </tr>
+                        <tr>
+                          <td colspan="3" style={{ textAlign: 'center'}} >
+                            <a href="./CompanyProjects">See More...</a>
                           </td>
                         </tr>
                       </tbody>
