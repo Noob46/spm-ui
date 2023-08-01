@@ -20,7 +20,7 @@ export const SnackBar = (props) => {
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       open={snackBarOpen}
       key={'bottom' + 'left'}>
-      <Alert onClose={handleSnackBarClose} severity="error" sx={{ width: '100%' }}>
+      <Alert onClose={handleSnackBarClose} severity={props.severity} sx={{ width: '100%' }}>
         {props.errorMessage}
       </Alert>
     </Snackbar>

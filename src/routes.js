@@ -9,6 +9,7 @@ import Activate from './Components/Activate';
 import ContactUs from './Components/ContactUs';
 import AboutUs from './Components/AboutUs';
 import KanbanView from './Components/KanbanView';
+import ResetPassword from './Components/ResetPassword';
 const NotFound = () => <h1>Page Not Found</h1>;
 
 const AppRoutes = () => {
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       <Route path='/ContactUs' element={<ContactUs />} />
       <Route path='/AboutUs' element={<AboutUs />} />
       <Route path='/KanbanView' element={<KanbanView />} />
+      <Route path='/resetPassword/:userToken' element={<ResetPassword />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )

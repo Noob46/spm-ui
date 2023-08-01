@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 import '../CSS/Signup.css';
 import Button from '../Reusables/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,11 +8,12 @@ import Link from '@mui/material/Link'
 import { userLogin } from '../Actions/LoginActions';
 import { SnackBar } from '../Reusables/Snackbar';
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [severity, setSeverity] = useState('');
 
   const navigate = useNavigate();
 
@@ -20,15 +22,22 @@ const Login = () => {
     console.log(loginStatus, 'loginStatus')
     if (loginStatus.message.data.message === 'User not found') {
       setErrorMessage('User not found');
+      setSeverity('error');
       setSnackBarOpen(true);
     } else if (loginStatus.message.data.message === 'Incorrect Password') {
       setErrorMessage('Incorrect Password');
+      setSeverity('error');
       setSnackBarOpen(true);
     } else if (loginStatus.message.data.message === 'Email not verified') {
       setErrorMessage('Email not verified');
+      setSeverity('error');
+      setSnackBarOpen(true);
+    } else if(!loginStatus.ValidateSessionToken) {
+      setErrorMessage('Token Error');
+      setSeverity('error');
       setSnackBarOpen(true);
     } else {
-      navigate("/dashboard");
+      // navigate("/dashboard");
       // window.location.reload();
     }
   }
@@ -73,7 +82,7 @@ const Login = () => {
               </Form.Group>
             </Form>
             <Button handleChange={() => handleChange()} buttonName={'Login'} />
-            {snackBarOpen ? <SnackBar open={snackBarOpen} handleSnackBarClose={handleSnackBarClose} errorMessage={errorMessage} /> : null}
+            {snackBarOpen ? <SnackBar open={snackBarOpen} severity={severity} handleSnackBarClose={handleSnackBarClose} errorMessage={errorMessage} /> : null}
           </div>
         </div>
       </main>
@@ -84,4 +93,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    userDetails: state.login
+  }
+}
+
+export default connect(mapStateToProps, null)(Login);

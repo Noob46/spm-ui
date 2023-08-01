@@ -7,7 +7,6 @@ const Activate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(routeParams, 'routeParams')
     activate({userToken: routeParams.userToken})
     navigate('/');
   }, [])
