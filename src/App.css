@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+[data-rbd-drag-handle-context-id] {
+  /* background: rgb(255, 255, 255) !important; */
+  background: beige !important;
+}
+
+[data-rbd-droppable-context-id] {
+  /* background: rgb(235, 236, 240) !important; */
+  background-image: linear-gradient(195deg, #42424a 0%, #191919 100%) !important;
+  margin-right: 10px !important;
+}

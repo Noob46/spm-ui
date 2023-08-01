@@ -14,12 +14,14 @@ const Signup = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [company_id, setCompany] = useState(1);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [severity, setSeverity] = useState('');
 
   const navigate = useNavigate();
 
   const handleChange = async () => {
     if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
       setErrorMessage('Email format is not valid');
+      setSeverity('error');
       setSnackBarOpen(true);
     } else if (password === repeatPassword) {
       const refreshToken = '';
@@ -27,10 +29,12 @@ const Signup = () => {
       console.log(registerUser, 'registerUser')
       if (registerUser.response.data.message === 'Email Sent Successfully!') {
         setErrorMessage('Email Sent Successfully. Please Verify your Email ID');
+        setSeverity('info');
         setSnackBarOpen(true);
       }
     } else {
       setErrorMessage('Passwords does not match');
+      setSeverity('error');
       setSnackBarOpen(true);
     }
   }
