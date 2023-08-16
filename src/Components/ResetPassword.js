@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
-import Button from '../Reusables/Button';
+import Button from '../Reusables/Button.js';
 import { useNavigate, useParams } from "react-router-dom";
-import { setNewPassword } from '../Actions/LoginActions';
-import { SnackBar } from '../Reusables/Snackbar';
+import { setNewPassword } from '../Actions/LoginActions.js';
+import { SnackBar } from '../Reusables/Snackbar.js';
 
 const ResetPassword = () => {
   const [password, setPassword] = useState('');

@@ -1,7 +1,7 @@
 import React from "react";
 import '../CSS/AboutUs.css';
 import '../CSS/Dashboard.css';
-import { SideNavBar } from '../Reusables/SideNavBar';
+import { SideNavBar } from '../Reusables/SideNavBar.js';
 
 const AboutUs = () => {
   return (

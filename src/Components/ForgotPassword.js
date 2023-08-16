@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Signup.css';
-import Button from '../Reusables/Button';
+import Button from '../Reusables/Button.js';
 import Form from 'react-bootstrap/Form';
-import { userLogin } from '../Actions/LoginActions';
-import { SnackBar } from '../Reusables/Snackbar';
-import { resetPassword } from '../Actions/LoginActions';
+import { userLogin } from '../Actions/LoginActions.js';
+import { SnackBar } from '../Reusables/Snackbar.js';
+import { resetPassword } from '../Actions/LoginActions.js';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

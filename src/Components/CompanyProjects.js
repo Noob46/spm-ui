@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SideNavBar } from '../Reusables/SideNavBar';
+import { SideNavBar } from '../Reusables/SideNavBar.js';
 
 export const CompanyProjects = () => {
   const navigate = useNavigate();

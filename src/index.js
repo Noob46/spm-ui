@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './routes';
-import reportWebVitals from './reportWebVitals';
-import store from './Reducers/store';
+import Routes from './routes.js';
+import reportWebVitals from './reportWebVitals.js';
+import store from './Reducers/store.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

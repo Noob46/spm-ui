@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Modal, Form } from "react-bootstrap";
 import Button from '../Reusables/Button';
-import { SideNavBar } from '../Reusables/SideNavBar';
+import { SideNavBar } from '../Reusables/SideNavBar.js';
 import '../CSS/Dashboard.css';
-import Header from './Header';
-import { AddTask } from '../Actions/TaskActions';
-import { SnackBar } from '../Reusables/Snackbar';
+import Header from './Header.js';
+import { AddTask } from '../Actions/TaskActions.js';
+import { SnackBar } from '../Reusables/Snackbar.js';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -19,6 +19,10 @@ const Dashboard = () => {
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [severity, setSeverity] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [base64Data, setBase64Data] = useState('');
+  const [fileUrl, setFileUrl] = useState('');
+  const [enableProjectDetailModal, setEnableProjectDetailModal] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,7 +34,9 @@ const Dashboard = () => {
       status_id,
       project_id,
       employee_id,
-      assigned_to
+      assigned_to,
+      base64String: base64Data,
+      fileName: selectedFile.name
     };
     const addTaskAction = await AddTask(obj);
     console.log(addTaskAction, 'addTaskAction')
@@ -46,7 +52,48 @@ const Dashboard = () => {
 
   const openTaskDetailModal = () => setEnableTaskDetailModal(true);
   const handleTaskDetailClose = () => setEnableTaskDetailModal(false);
-  const handleTaskDetailSubmit = () => {};
+  const handleTaskDetailSubmit = () => { };
+
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64Content = e.target.result.split(',')[1];
+        setBase64Data(base64Content);
+        const blob = base64ToBlob(base64Content);
+        const url = URL.createObjectURL(blob);
+        setFileUrl(url);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const base64ToBlob = (base64String) => {
+    const byteCharacters = atob(base64String);
+    const byteArrays = [];
+    console.log(selectedFile, 'selectedFile')
+
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteArrays.push(byteCharacters.charCodeAt(i));
+    }
+
+    return new Blob([new Uint8Array(byteArrays)]);
+  };
+
+  const handleProjectDetailClose = () => {
+    setEnableProjectDetailModal(false);
+  }
+
+  const handleProjectDetailSubmit = () => {
+    setEnableProjectDetailModal(false);
+  }
+
+  const openProjectDetailModal = () => {
+    setEnableProjectDetailModal(true);
+  }
 
   return (
     <div class="g-sidenav-show  bg-gray-200">
@@ -56,41 +103,33 @@ const Dashboard = () => {
         {/* <!-- End Navbar --> */}
         {/* Add Task Modal Start */}
 
-        {/* <Modal
-          isOpen={isOpen}
-          onRequestClose={handleCancel}
-          contentLabel="Task Detail"
-          style={modalStyles}
-        >
-          <h2>Task Detail</h2>
-          <div>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={task.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Description:</label>
-            <textarea
-              name="description"
-              value={task.description}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Comment:</label>
-            <textarea name="comment" value={task.comment} onChange={handleChange} />
-          </div>
-          <div>
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleCancel}>Cancel</button>
-          </div>
-        </Modal> */}
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={enableProjectDetailModal} onHide={handleProjectDetailClose}>
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">Task Detail</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formName">
+                <Form.Label>Project Name</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Project Description</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Project Budjet</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Technologies Used</Form.Label>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" handleChange={handleProjectDetailClose} buttonName={'Close'} />
+            <Button variant="primary" handleChange={handleProjectDetailSubmit} buttonName={'Save Changes'} />
+          </Modal.Footer>
+        </Modal>
 
-<Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={enabletaskDetailModal} onHide={handleTaskDetailClose}>
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={enabletaskDetailModal} onHide={handleTaskDetailClose}>
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">Task Detail</Modal.Title>
           </Modal.Header>
@@ -129,6 +168,18 @@ const Dashboard = () => {
               <Form.Group controlId="formEmail">
                 <Form.Label>Task Description</Form.Label>
                 <Form.Control placeholder="Enter Task Description" value={description} as="textarea" rows={3} onChange={(e) => setDescription(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Default file input example</Form.Label>
+                <Form.Control type="file" onChange={handleFileInputChange} />
+
+                {fileUrl && (
+                  <div>
+                    <a href={fileUrl} download={selectedFile.name}>
+                      Download File
+                    </a>
+                  </div>
+                )}
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -273,7 +324,7 @@ const Dashboard = () => {
                                 <img src="./assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd" />
                               </div> */}
                               <div class="d-flex flex-column justify-content-center">
-                                <Button type="button" class="btn btn-primary" buttonName={'MATERIAL XD VERSION'} >
+                                <Button type="button" handleChange={openProjectDetailModal} class="btn btn-primary" buttonName={'MATERIAL XD VERSION'} >
                                   <h6 class="mb-0 text-sm">Material XD Version</h6>
                                 </Button>
                               </div>
