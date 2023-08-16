@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { activate } from '../Actions/LoginActions';
+import { activate } from '../Actions/LoginActions.js';
 
 const Activate = () => {
   const routeParams = useParams();

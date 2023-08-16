@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import App from './App';
+import App from './App.js';
 import Signup from './Components/Signup.js';
 import Dashboard from './Components/Dashboard.js';
-import ForgotPassword from './Components/ForgotPassword';
-import { CompanyProjects } from './Components/CompanyProjects';
-import Activate from './Components/Activate';
-import ContactUs from './Components/ContactUs';
-import AboutUs from './Components/AboutUs';
-import KanbanView from './Components/KanbanView';
-import ResetPassword from './Components/ResetPassword';
+import ForgotPassword from './Components/ForgotPassword.js';
+import { CompanyProjects } from './Components/CompanyProjects.js';
+import Activate from './Components/Activate.js';
+import ContactUs from './Components/ContactUs.js';
+import AboutUs from './Components/AboutUs.js';
+import KanbanView from './Components/KanbanView.js';
+import ResetPassword from './Components/ResetPassword.js';
 const NotFound = () => <h1>Page Not Found</h1>;
 
 const AppRoutes = () => {

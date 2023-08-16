@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../CSS/Signup.css';
-import Button from '../Reusables/Button';
+import Button from '../Reusables/Button.js';
 import Form from 'react-bootstrap/Form';
 import Link from '@mui/material/Link'
-import { userLogin } from '../Actions/LoginActions';
-import { SnackBar } from '../Reusables/Snackbar';
+import { userLogin } from '../Actions/LoginActions.js';
+import { SnackBar } from '../Reusables/Snackbar.js';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -37,8 +37,8 @@ const Login = (props) => {
       setSeverity('error');
       setSnackBarOpen(true);
     } else {
-      // navigate("/dashboard");
-      // window.location.reload();
+      navigate("/dashboard");
+      window.location.reload();
     }
   }
 

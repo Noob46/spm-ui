@@ -1,7 +1,9 @@
-import { taskActionType } from "./types/taskTypes";
+import { taskActionType } from "./types/taskTypes.js";
 
 const initialState = {
-  allTasks: []
+  allTasks: [],
+  usersByCompany: [],
+  allStatusList: []
 }
 
 const taskReducer = (state = initialState, action) => {
@@ -9,6 +11,14 @@ const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case taskActionType.ALL_TASKS_DATA: {
       clonedState = { ...state, allTasks: action.data }
+      break;
+    }
+    case taskActionType.GET_USER_BY_COMPANY: {
+      clonedState = { ...state, usersByCompany: action.data }
+      break;
+    }
+    case taskActionType.ALL_STATUS_LIST: {
+      clonedState = { ...state, allStatusList: action.data }
       break;
     }
     default: {

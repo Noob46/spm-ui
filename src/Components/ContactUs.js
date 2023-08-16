@@ -1,6 +1,6 @@
 import React from "react";
 import '../CSS/ContactUs.css';
-import { SideNavBar } from '../Reusables/SideNavBar';
+import { SideNavBar } from '../Reusables/SideNavBar.js';
 
 const ContactUs = () => {
   return (

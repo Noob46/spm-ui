@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Link from '@mui/material/Link';
-import { SnackBar } from '../Reusables/Snackbar';
+import { SnackBar } from '../Reusables/Snackbar.js';
 import { useNavigate } from 'react-router-dom';
-import { userRegister } from '../Actions/SignupActions';
+import { userRegister } from '../Actions/SignupActions.js';
 import '../CSS/Signup.css';
-import Button from '../Reusables/Button';
+import Button from '../Reusables/Button.js';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +15,7 @@ const Signup = () => {
   const [company_id, setCompany] = useState(1);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [severity, setSeverity] = useState('');
+  const [name, setName] = useState('Conestoga');
 
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const Signup = () => {
       setSnackBarOpen(true);
     } else if (password === repeatPassword) {
       const refreshToken = '';
-      const registerUser = await userRegister({ email, password, company_id, refreshToken });
+      const registerUser = await userRegister({ email, password, company_id, refreshToken, name });
       console.log(registerUser, 'registerUser')
       if (registerUser.response.data.message === 'Email Sent Successfully!') {
         setErrorMessage('Email Sent Successfully. Please Verify your Email ID');

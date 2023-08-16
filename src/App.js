@@ -4,7 +4,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './App.css';
-import Login from './Components/Login';
+import Login from './Components/Login.js';
 
 const App = () => {
   return (
